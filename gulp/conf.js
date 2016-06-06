@@ -29,7 +29,7 @@ module.exports = {
 					others: ['src/app/**/*.sass', 'src/app/**/*.scss', '!src/app/app.scss']
 				}
 			},
-			package: 'package.json'
+			package: 'src/package.json'
 		},
 		build: {
 			main: 'build/',
