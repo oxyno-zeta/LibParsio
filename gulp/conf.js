@@ -18,6 +18,7 @@ module.exports = {
 	paths: {
 		src: 'src/',
 		srcFiles: {
+			node_modules: 'src/node_modules*/**',
 			js: 'src/*.js',
 			index: 'src/app/index.html',
 			app: {
@@ -29,7 +30,7 @@ module.exports = {
 					others: ['src/app/**/*.sass', 'src/app/**/*.scss', '!src/app/app.scss']
 				}
 			},
-			package: 'package.json'
+			package: 'src/package.json'
 		},
 		build: {
 			main: 'build/',

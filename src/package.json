@@ -1,0 +1,20 @@
+{
+  "name": "libparsio",
+  "version": "0.0.1",
+  "description": "Unofficial Libraries.io Client",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "libraries.io",
+    "parser",
+    "libraries"
+  ],
+  "author": "Oxyno-zeta (Havrileck Alexandre)",
+  "license": "MIT",
+  "dependencies": {
+    "librarian-parsers": "^1.2.9",
+    "lodash": "^4.13.1"
+  }
+}

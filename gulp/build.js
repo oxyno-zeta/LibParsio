@@ -20,7 +20,7 @@ gulp.task('build:dev', function(cb){
 });
 
 gulp.task('build:prepare', function(){
-	var paths = [conf.paths.srcFiles.js, conf.paths.srcFiles.package];
+	var paths = [conf.paths.srcFiles.js, conf.paths.srcFiles.package, conf.paths.srcFiles.node_modules];
 	gulp.src(paths)
 		.pipe(gulp.dest(conf.paths.build.main));
 });
