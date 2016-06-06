@@ -16,7 +16,7 @@ var conf = require('./conf');
 /* ************************************* */
 
 gulp.task('build:dev', function(cb){
-	return runSequence('clean', ['build:prepare', 'app'], cb);
+	return runSequence('clean', 'build:prepare', 'app', cb);
 });
 
 gulp.task('build:prepare', function(){
