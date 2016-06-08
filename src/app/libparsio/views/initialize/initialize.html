@@ -2,15 +2,31 @@
     <div class="panel-heading">User data</div>
     <div class="panel-body">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon2">
-            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Github username"
+                   aria-describedby="username"
+                   ng-model="initializeCtrl.username">
+            <span class="input-group-addon" id="username">
+                <i class="fa fa-user initialize-icon" aria-hidden="true"></i>
+            </span>
         </div>
-        <div style="height: 10px;"></div>
+
+        <div class="separator-10"></div>
+
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key" aria-hidden="true"></i></span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Libraries.io Api Token"
+                   aria-describedby="token"
+                   ng-model="initializeCtrl.apiKey">
+            <span class="input-group-addon" id="token">
+                <i class="fa fa-key initialize-icon" aria-hidden="true"></i>
+            </span>
         </div>
-        <div style="height: 10px;"></div>
-        <button type="button" class="btn btn-primary">Left</button>
+
+        <div class="separator-10"></div>
+
+        <button type="button" class="btn btn-primary" ng-click="initializeCtrl.submit()">Submit</button>
     </div>
 </div>

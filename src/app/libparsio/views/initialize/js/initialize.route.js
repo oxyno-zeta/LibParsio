@@ -18,7 +18,9 @@
 					url: '/',
 					views: {
 						'content': {
-							templateUrl: 'libparsio/views/initialize/initialize.html'
+							templateUrl: 'libparsio/views/initialize/initialize.html',
+							controller: 'InitializeController',
+							controllerAs: 'initializeCtrl'
 						}
 					}
 				});

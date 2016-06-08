@@ -15,13 +15,14 @@
     </head>
     <body ng-app="libparsio">
 
-        <div ui-view="content"></div>
+        <div class="libparsio" ui-view="content"></div>
 
         <!-- Vendors Web -->
         <script>
             // Workaround to inject jQuery
             window.$ = window.jQuery = require('jquery');
         </script>
+        <script type="text/javascript" src="../node_modules/lodash/lodash.js"></script>
         <script type="text/javascript" src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
         <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="../node_modules/angular-animate/angular-animate.js"></script>
