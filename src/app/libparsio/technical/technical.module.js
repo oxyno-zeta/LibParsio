@@ -13,7 +13,8 @@
 			'libparsio.technical.cache',
 			'libparsio.technical.dao',
 			'libparsio.technical.wrapper',
-			'libparsio.technical.constant'
+			'libparsio.technical.constant',
+			'libparsio.technical.config'
 		]);
 
 })();

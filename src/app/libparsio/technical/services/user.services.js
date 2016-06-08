@@ -11,7 +11,7 @@
 		.factory('userService', userService);
 
 	/** @ngInject */
-	function userService(userDaoService) {
+	function userService($q, userDaoService, userCacheService) {
 		var service = {
 			getUserFromApi: getUserFromApi
 		};
@@ -28,8 +28,23 @@
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
 
+		/**
+		 * Get User From Api.
+		 * @param username {String} User name
+		 * @param apiKey {String} Api Key
+		 * @returns {*}
+		 */
 		function getUserFromApi(username, apiKey) {
-			userDaoService.getUserFromApi(username, apiKey);
+			var deferred = $q.defer();
+			userDaoService.getUserFromApi(username, apiKey).then(function(result){
+				userCacheService.putApiToken(apiKey);
+				userCacheService.putUserName(username);
+				userCacheService.putUserData(result.data);
+				deferred.resolve();
+			}, function(){
+				deferred.reject();
+			});
+			return deferred.promise;
 		}
 	}
 

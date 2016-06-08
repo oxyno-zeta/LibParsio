@@ -28,6 +28,12 @@
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
 
+		/**
+		 * Get User From Api.
+		 * @param username {String} User name
+		 * @param apiKey {String} Api Key
+		 * @returns {*}
+		 */
 		function getUserFromApi(username, apiKey) {
 			var deferred = $q.defer();
 			var url = URL_CONSTANT.GITHUB_USER.URL;
@@ -38,11 +44,7 @@
 				params: params
 			};
 
-			apiWrapperService.getMethod(url, config).then(function(result){
-				console.log(result);
-			}, function(err){
-				console.error(err);
-			});
+			apiWrapperService.getMethod(url, config).then(deferred.resolve, deferred.reject);
 			return deferred.promise;
 		}
 	}
