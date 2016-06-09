@@ -15,10 +15,12 @@
 		    // State config
 			$stateProvider
 				.state('header.loading', {
-					url: '/loading',
+					url: '/',
 					views: {
 						'content': {
-							templateUrl: 'libparsio/views/loading/loading.html'
+							templateUrl: 'libparsio/views/loading/loading.html',
+							controller: 'LoadingController',
+							controllerAs: 'loadingCtrl'
 						}
 					}
 				});

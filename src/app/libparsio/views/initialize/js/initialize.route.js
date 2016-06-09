@@ -15,7 +15,7 @@
 		    // State configuration
 			$stateProvider
 				.state('header.initialize', {
-					url: '/',
+					url: '/initialize',
 					views: {
 						'content': {
 							templateUrl: 'libparsio/views/initialize/initialize.html',
