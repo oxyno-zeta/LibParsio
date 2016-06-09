@@ -27,6 +27,26 @@
 
         <div class="separator-10"></div>
 
+        <p class="bg-info text-info panel-p-full-size"
+           ng-if="initializeCtrl.loadingMessage">
+            <i class="fa fa-refresh fa-spin loading-text-margin"></i> Getting data...
+        </p>
+
+        <p class="bg-danger text-danger panel-p-full-size"
+           ng-if="initializeCtrl.errorMessage">
+            Error with your data ! Please change them and retry.
+        </p>
+
+        <p class="bg-success text-success panel-p-full-size"
+           ng-if="initializeCtrl.successMessage">
+            Getting data succeed !
+        </p>
+
+        <div class="separator-10"
+             ng-if="initializeCtrl.successMessage ||
+                initializeCtrl.errorMessage ||
+                initializeCtrl.loadingMessage"></div>
+
         <button type="button" class="btn btn-primary" ng-click="initializeCtrl.submit()">Submit</button>
     </div>
 </div>

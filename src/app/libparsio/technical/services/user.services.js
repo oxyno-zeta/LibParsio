@@ -37,11 +37,16 @@
 		function getUserFromApi(username, apiKey) {
 			var deferred = $q.defer();
 			userDaoService.getUserFromApi(username, apiKey).then(function(result){
+				// Save all data
 				userCacheService.putApiToken(apiKey);
 				userCacheService.putUserName(username);
 				userCacheService.putUserData(result.data);
+				// Resolve
 				deferred.resolve();
 			}, function(){
+				// Remove all data
+				userCacheService.removeAllData();
+				// Reject
 				deferred.reject();
 			});
 			return deferred.promise;

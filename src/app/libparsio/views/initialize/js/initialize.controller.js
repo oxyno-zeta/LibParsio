@@ -16,6 +16,9 @@
 		// Variables
 		vm.username = undefined;
 		vm.apiKey = undefined;
+		vm.errorMessage = false;
+		vm.loadingMessage = false;
+		vm.successMessage = false;
 		// Functions
 		vm.submit = submit;
 
@@ -25,13 +28,39 @@
 		/* ********  PRIVATE FUNCTIONS  ******** */
 		/* ************************************* */
 
+		/**
+		 * Reset all view booleans.
+		 */
+		function resetAllViewBooleans(){
+			vm.errorMessage = false;
+			vm.loadingMessage = false;
+			vm.successMessage = false;
+		}
 
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
 
+		/**
+		 * Submit data.
+		 */
 		function submit(){
-			userService.getUserFromApi(vm.username, vm.apiKey);
+			// Reset all booleans
+			resetAllViewBooleans();
+
+			// Loading
+			vm.loadingMessage = true;
+
+			// Api call
+			userService.getUserFromApi(vm.username, vm.apiKey).then(function(){
+				// Success
+				vm.successMessage = true;
+			}, function(){
+				// Error
+				vm.errorMessage = true;
+			}).finally(function(){
+				vm.loadingMessage = false;
+			});
 		}
 	}
 
