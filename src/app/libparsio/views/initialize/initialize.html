@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-heading">User data</div>
+    <div class="panel-body">
+        <div class="input-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Github username"
+                   aria-describedby="username"
+                   ng-model="initializeCtrl.username">
+            <span class="input-group-addon" id="username">
+                <i class="fa fa-user initialize-icon" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="separator-10"></div>
+
+        <div class="input-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Libraries.io Api Token"
+                   aria-describedby="token"
+                   ng-model="initializeCtrl.apiKey">
+            <span class="input-group-addon" id="token">
+                <i class="fa fa-key initialize-icon" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="separator-10"></div>
+
+        <p class="bg-info text-info panel-p-full-size"
+           ng-if="initializeCtrl.loadingMessage">
+            <i class="fa fa-refresh fa-spin loading-text-margin"></i> Getting data...
+        </p>
+
+        <p class="bg-danger text-danger panel-p-full-size"
+           ng-if="initializeCtrl.errorMessage">
+            Error with your data ! Please change them and retry.
+        </p>
+
+        <p class="bg-success text-success panel-p-full-size"
+           ng-if="initializeCtrl.successMessage">
+            Getting data succeed !
+        </p>
+
+        <div class="separator-10"
+             ng-if="initializeCtrl.successMessage ||
+                initializeCtrl.errorMessage ||
+                initializeCtrl.loadingMessage"></div>
+
+        <button type="button" class="btn btn-primary" ng-click="initializeCtrl.submit()">Submit</button>
+    </div>
+</div>

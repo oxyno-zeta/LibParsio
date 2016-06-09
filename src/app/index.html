@@ -6,6 +6,7 @@
 
         <!-- Vendors Web -->
         <link rel="stylesheet" type="text/css" href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+        <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.css">
         <!-- end Vendors Web -->
 
         <!-- inject:css -->
@@ -14,13 +15,14 @@
     </head>
     <body ng-app="libparsio">
 
-        <div ui-view="content"></div>
+        <div class="libparsio" ui-view="content"></div>
 
         <!-- Vendors Web -->
         <script>
             // Workaround to inject jQuery
             window.$ = window.jQuery = require('jquery');
         </script>
+        <script type="text/javascript" src="../node_modules/lodash/lodash.js"></script>
         <script type="text/javascript" src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
         <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="../node_modules/angular-animate/angular-animate.js"></script>
@@ -28,6 +30,7 @@
         <script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
         <script type="text/javascript" src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
         <script type="text/javascript" src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="../node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
         <!-- end Vendors Web -->
 
         <!-- inject:js -->

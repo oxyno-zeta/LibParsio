@@ -8,10 +8,6 @@
 	'use strict';
 
 	angular
-		.module('libparsio.core', [
-			'ui.router',
-			'ui.bootstrap',
-			'LocalStorageModule'
-		]);
+		.module('libparsio.views.loading', []);
 
 })();

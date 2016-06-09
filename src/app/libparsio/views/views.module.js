@@ -10,7 +10,8 @@
 	angular
 		.module('libparsio.views', [
 			'libparsio.views.header',
-			'libparsio.views.welcome'
+			'libparsio.views.loading',
+			'libparsio.views.initialize'
 		]);
 
 })();
