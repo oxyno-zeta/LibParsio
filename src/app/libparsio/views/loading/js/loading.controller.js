@@ -1,6 +1,6 @@
 /*
  * Author: Alexandre Havrileck (Oxyno-zeta) 
- * Date: 09/06/16
+ * Date: 10/06/16
  * Licence: See Readme
  */
 (function () {
@@ -25,12 +25,13 @@
 		/* ********  PRIVATE FUNCTIONS  ******** */
 		/* ************************************* */
 
-		function activate(){
-			if (!userCacheService.isDataFullySet()){
-				$state.go('header.initialize');
+		function activate() {
+			// Check user data are fully set
+			if (userCacheService.isDataFullySet()) {
+				$state.go('header.parse');
 			}
 			else {
-				console.log('Initialized !')
+				$state.go('header.initialize');
 			}
 		}
 
@@ -42,5 +43,4 @@
 	}
 
 })();
-
 

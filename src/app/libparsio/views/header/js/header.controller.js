@@ -11,12 +11,13 @@
 		.controller('HeaderController', HeaderController);
 
 	/** @ngInject */
-	function HeaderController(userCacheService) {
+	function HeaderController($rootScope, userCacheService) {
 		var vm = this;
 		// Variables
+		vm.dataSet = userCacheService.isDataFullySet();
+		vm.userCache = userCacheService.userCache;
 		// Functions
 
-		activate();
 
 		////////////////
 
@@ -24,15 +25,19 @@
 		/* ********  PRIVATE FUNCTIONS  ******** */
 		/* ************************************* */
 
-		function activate() {
-			//
-		}
 
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
 
 
+		/* ************************************* */
+		/* ********        EVENTS       ******** */
+		/* ************************************* */
+
+		$rootScope.$on('userCache:dataSet', function(){
+			vm.dataSet = true;
+		});
 
 	}
 

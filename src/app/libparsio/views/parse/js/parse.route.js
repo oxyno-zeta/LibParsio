@@ -1,24 +1,24 @@
 /*
  * Author: Alexandre Havrileck (Oxyno-zeta) 
- * Date: 06/06/16
+ * Date: 11/06/16
  * Licence: See Readme
  */
 (function () {
 	'use strict';
 
 	angular
-		.module('libparsio.views.welcome')
+		.module('libparsio.views.parse')
 		.config(routeConfig);
 
 		/** @ngInject */
 		function routeConfig ($stateProvider) {
-		    // State config
+		    // State configuration
 			$stateProvider
-				.state('header.welcome', {
-					url: '/',
+				.state('header.parse', {
+					url: '/parse',
 					views: {
-						'content': {
-							templateUrl: 'libparsio/views/welcome/welcome.html'
+						content: {
+							templateUrl: 'libparsio/views/parse/parse.html'
 						}
 					}
 				});

@@ -19,7 +19,7 @@
 					views: {
 						'content': {
 							templateUrl: 'libparsio/views/loading/loading.html',
-							controller: 'LoadingController',
+							controller:'LoadingController',
 							controllerAs: 'loadingCtrl'
 						}
 					}

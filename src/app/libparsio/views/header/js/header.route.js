@@ -18,7 +18,9 @@
 					abstract: true,
 					views: {
 						'content': {
-							templateUrl: 'libparsio/views/header/header.html'
+							templateUrl: 'libparsio/views/header/header.html',
+							controller: 'HeaderController',
+							controllerAs: 'headerCtrl'
 						}
 					}
 				});

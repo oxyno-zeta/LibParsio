@@ -11,7 +11,7 @@
 		.controller('InitializeController', InitializeController);
 
 	/** @ngInject */
-	function InitializeController(userService) {
+	function InitializeController($timeout, $state, userService) {
 		var vm = this;
 		// Variables
 		vm.username = undefined;
@@ -55,6 +55,10 @@
 			userService.getUserFromApi(vm.username, vm.apiKey).then(function(){
 				// Success
 				vm.successMessage = true;
+				// Change page
+				$timeout(function(){
+					$state.go('header.parse');
+				}, 1000);
 			}, function(){
 				// Error
 				vm.errorMessage = true;

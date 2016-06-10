@@ -11,7 +11,8 @@
 		.module('libparsio.views', [
 			'libparsio.views.header',
 			'libparsio.views.loading',
-			'libparsio.views.initialize'
+			'libparsio.views.initialize',
+			'libparsio.views.parse'
 		]);
 
 })();
