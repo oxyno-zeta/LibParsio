@@ -13,15 +13,20 @@
 	/** @ngInject */
 	function UserSettingsController(userCacheService) {
 		var vm = this;
+		// Variables
 		vm.cache = userCacheService.userCache;
-
-		activate();
+		// Functions
 
 		////////////////
 
-		function activate() {
-			console.log(vm.cache);
-		}
+		/* ************************************* */
+		/* ********  PRIVATE FUNCTIONS  ******** */
+		/* ************************************* */
+
+		/* ************************************* */
+		/* ********   PUBLIC FUNCTIONS  ******** */
+		/* ************************************* */
+
 	}
 
 })();
