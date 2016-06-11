@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading">User</div>
+    <table class="table">
+        <tr>
+            <th>
+                Username
+            </th>
+            <td ng-bind="userSettingsCtrl.cache.userName"></td>
+        </tr>
+        <tr>
+            <th>
+                Api Key
+            </th>
+            <td ng-bind="userSettingsCtrl.cache.apiKey"></td>
+        </tr>
+        <!-- User Data -->
+        <tr ng-if="userSettingsCtrl.cache.userData.blog">
+            <th>
+                Blog
+            </th>
+            <td ng-bind="userSettingsCtrl.cache.userData.blog"></td>
+        </tr>
+        <tr ng-if="userSettingsCtrl.cache.userData.company">
+            <th>
+                Company
+            </th>
+            <td ng-bind="userSettingsCtrl.cache.userData.company"></td>
+        </tr>
+        <tr ng-if="userSettingsCtrl.cache.userData.name">
+            <th>
+                Name
+            </th>
+            <td ng-bind="userSettingsCtrl.cache.userData.name"></td>
+        </tr>
+
+    </table>
+</div>

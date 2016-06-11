@@ -11,12 +11,13 @@
 		.controller('HeaderController', HeaderController);
 
 	/** @ngInject */
-	function HeaderController($rootScope, userCacheService) {
+	function HeaderController($rootScope, $state, userCacheService) {
 		var vm = this;
 		// Variables
 		vm.dataSet = userCacheService.isDataFullySet();
 		vm.userCache = userCacheService.userCache;
 		// Functions
+		vm.openMainPage = openMainPage;
 
 
 		////////////////
@@ -29,6 +30,19 @@
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
+
+		/**
+		 * Open main page.
+		 */
+		function openMainPage(){
+			// Check if data are fully set
+			if (userCacheService.isDataFullySet()){
+				$state.go('header.parse')
+			}
+			else {
+				$state.go('header.initialize');
+			}
+		}
 
 
 		/* ************************************* */

@@ -12,7 +12,7 @@
 		.factory('apiWrapperService', apiWrapperService);
 
 	/** @ngInject */
-	function apiWrapperService($http) {
+	function apiWrapperService($http, $q) {
 		var service = {
 			getMethod: getMethod
 		};
@@ -36,11 +36,17 @@
 		 * @returns {*}
 		 */
 		function getMethod(url, config) {
+			var deferred = $q.defer();
+
 			if (_.isUndefined(config)){
 				config = {};
 			}
 
-			return $http.get(url, config);
+			$http.get(url, config).then(function(result){
+				deferred.resolve(result.data);
+			}, deferred.reject);
+
+			return deferred.promise;
 		}
 	}
 
