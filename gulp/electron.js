@@ -36,31 +36,35 @@ gulp.task('electron:prepare', function(cb){
 });
 
 gulp.task('electron:run:main', function(cb){
-	var child = proc.spawn(electron, [conf.paths.build.main]);
-	child.on('close', function (code) {
-		if (code == 1){
-			console.error('Something wrong with the app');
-			console.error('Try run "electron src/" to see full error');
-		}
-		cb();
-	});
-	child.on('error', function (code) {
-		console.error(code);
-		cb();
-	});
+	setTimeout(function(){
+		var child = proc.spawn(electron, [conf.paths.build.main]);
+		child.on('close', function (code) {
+			if (code == 1){
+				console.error('Something wrong with the app');
+				console.error('Try run "electron src/" to see full error');
+			}
+			cb();
+		});
+		child.on('error', function (code) {
+			console.error(code);
+			cb();
+		});
+	}, 500);
 });
 
 gulp.task('electron:run:watch', function(cb){
-	var child = proc.spawn(electron, [conf.paths.build.main]);
-	child.on('close', function (code) {
-		if (code == 1){
-			console.error('Something wrong with the app');
-			console.error('Try run "electron src/" to see full error');
-		}
-	});
-	child.on('error', function (code) {
-		console.error(code);
-	});
-	cb();
+	setTimeout(function(){
+		var child = proc.spawn(electron, [conf.paths.build.main]);
+		child.on('close', function (code) {
+			if (code == 1){
+				console.error('Something wrong with the app');
+				console.error('Try run "electron src/" to see full error');
+			}
+		});
+		child.on('error', function (code) {
+			console.error(code);
+		});
+		cb();
+	}, 500);
 });
 
