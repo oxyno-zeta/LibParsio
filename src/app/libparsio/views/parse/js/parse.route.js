@@ -18,7 +18,9 @@
 					url: '/parse',
 					views: {
 						content: {
-							templateUrl: 'libparsio/views/parse/parse.html'
+							templateUrl: 'libparsio/views/parse/parse.html',
+							controller: 'ParseController',
+							controllerAs: 'parseCtrl'
 						}
 					}
 				});

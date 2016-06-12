@@ -11,7 +11,8 @@
 		.module('libparsio.core', [
 			'ui.router',
 			'ui.bootstrap',
-			'LocalStorageModule'
+			'LocalStorageModule',
+			'ui.codemirror'
 		]);
 
 })();
