@@ -14,11 +14,11 @@
 	function HeaderController($rootScope, $state, userCacheService) {
 		var vm = this;
 		// Variables
-		vm.dataSet = userCacheService.isDataFullySet();
+		vm.isDataSet = userCacheService.isDataFullySet();
 		vm.userCache = userCacheService.userCache;
 		// Functions
 		vm.openMainPage = openMainPage;
-
+		vm.disconnect = disconnect;
 
 		////////////////
 
@@ -30,6 +30,16 @@
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
+
+		/**
+		 * Disconnect.
+		 */
+		function disconnect(){
+			// Remove all data
+			userCacheService.removeAllData();
+			// Change page to initialize
+			$state.go('header.initialize');
+		}
 
 		/**
 		 * Open main page.
@@ -50,7 +60,11 @@
 		/* ************************************* */
 
 		$rootScope.$on('userCache:dataSet', function(){
-			vm.dataSet = true;
+			vm.isDataSet = true;
+		});
+
+		$rootScope.$on('userCache:dataRemoved', function(){
+			vm.isDataSet = false;
 		});
 
 	}
