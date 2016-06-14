@@ -1,8 +1,15 @@
 <div class="panel-group col-xs-12">
-    <!-- Parsing Process -->
-    <div class="panel panel-default ">
-        <div class="panel-heading">Parsing Process</div>
-        <div class="panel-body">
+
+    <uib-accordion close-others="false">
+        
+        <!-- Parsing Process -->
+        <uib-accordion-group is-open="parseCtrl.isPanelParsingProcessOpened">
+            <uib-accordion-heading>
+                Parsing Process <i class="pull-right fa"
+                   ng-class="{'fa-chevron-down': parseCtrl.isPanelParsingProcessOpened,
+                    'fa-chevron-right': !parseCtrl.isPanelParsingProcessOpened}"></i>
+            </uib-accordion-heading>
+
             <form class="form-horizontal">
 
                 <div class="form-group">
@@ -33,48 +40,61 @@
                 </div>
 
             </form>
-        </div>
-    </div>
 
-    <!-- Separator -->
-    <div class="separator-10"></div>
+        </uib-accordion-group>
 
-    <!-- Parsing Result -->
-    <div class="panel panel-success" ng-if="parseCtrl.successResult !== undefined">
-        <div class="panel-heading">Result</div>
-        <div class="panel-body">
+        <!-- Separator -->
+        <div class="separator-10"></div>
+
+        <!-- Parsing Result -->
+        <uib-accordion-group is-open="parseCtrl.isPanelResultOpened"
+                             panel-class="panel-success" ng-if="parseCtrl.successResult !== undefined">
+            <uib-accordion-heading>
+                Result <i class="pull-right fa"
+                                   ng-class="{'fa-chevron-down': parseCtrl.isPanelResultOpened,
+                    'fa-chevron-right': !parseCtrl.isPanelResultOpened}"></i>
+            </uib-accordion-heading>
+
             <div ng-repeat="(key, array) in parseCtrl.successResult.results">
                 <h3 ng-bind="key"></h3>
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Version</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Action</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in array">
-                            <td ng-bind="item.name"></td>
-                            <td ng-bind="item.version"></td>
-                            <td>
-                                <button type="button" class="btn btn-default"
-                                        ng-click="parseCtrl.openInBrowser(parseCtrl.successResult.platform, item.name)">
-                                    Open in browser
-                                </button>
-                            </td>
-                        </tr>
+                    <tr ng-repeat="item in array">
+                        <td ng-bind="item.name"></td>
+                        <td ng-bind="item.version"></td>
+                        <td>
+                            <button type="button" class="btn btn-default"
+                                    ng-click="parseCtrl.openInBrowser(parseCtrl.successResult.platform, item.name)">
+                                Open in browser
+                            </button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
 
-    <!-- Parsing Result -->
-    <div class="panel panel-danger" ng-if="parseCtrl.errorMessage !== undefined">
-        <div class="panel-heading">Error</div>
-        <div class="panel-body">
+        </uib-accordion-group>
+
+        <!-- Parsing Error -->
+        <uib-accordion-group is-open="parseCtrl.isPanelResultOpened"
+                             panel-class="panel-danger" ng-if="parseCtrl.errorMessage !== undefined">
+            <uib-accordion-heading>
+                Error <i class="pull-right fa"
+                          ng-class="{'fa-chevron-down': parseCtrl.isPanelResultOpened,
+                    'fa-chevron-right': !parseCtrl.isPanelResultOpened}"></i>
+            </uib-accordion-heading>
+
             <p ng-bind="parseCtrl.errorMessage"></p>
-        </div>
-    </div>
+
+        </uib-accordion-group>
+
+    </uib-accordion>
+
 </div>

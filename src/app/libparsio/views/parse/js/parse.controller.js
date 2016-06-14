@@ -23,6 +23,9 @@
 		};
 		vm.successResult = undefined;
 		vm.errorMessage = undefined;
+		vm.isPanelParsingProcessOpened = true;
+		vm.isPanelResultOpened = false;
+		vm.isPanelErrorOpened = false;
 		// Functions
 		vm.parse = parse;
 		vm.openInBrowser = openInBrowser;
@@ -56,11 +59,21 @@
 			// Parse
 			parseService.parse(vm.selectedParsing, vm.manifest).then(function(result){
 				vm.successResult = result;
+
+				// Open or close panels
+				vm.isPanelParsingProcessOpened = false;
+				vm.isPanelResultOpened = true;
+				vm.isPanelErrorOpened = false;
 			}, function(err){
 				if (!_.isString(err)){
 					err = 'Error in parsing';
 				}
 				vm.errorMessage = err;
+
+				// Open or close panels
+				vm.isPanelParsingProcessOpened = false;
+				vm.isPanelResultOpened = false;
+				vm.isPanelErrorOpened = true;
 			});
 		}
 	}
