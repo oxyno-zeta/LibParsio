@@ -11,7 +11,7 @@
 		.controller('ParseController', ParseController);
 
 	/** @ngInject */
-	function ParseController(parseService) {
+	function ParseController(parseService, subscribeService) {
 		var vm = this;
 		// Variables
 		vm.allPossibleParsing = parseService.allPossibleParsing;
@@ -25,7 +25,7 @@
 		vm.errorMessage = undefined;
 		// Functions
 		vm.parse = parse;
-
+		vm.openInBrowser = openInBrowser;
 
 		////////////////
 
@@ -38,6 +38,15 @@
 		/* ************************************* */
 
 		/**
+		 * Open in browser.
+		 * @param platform {String} platform
+		 * @param libraryName {String} library name
+		 */
+		function openInBrowser(platform, libraryName){
+			subscribeService.openInSystemBrowser(platform, libraryName);
+		}
+
+		/**
 		 * Parse.
 		 */
 		function parse(){
@@ -46,7 +55,6 @@
 			vm.errorMessage = undefined;
 			// Parse
 			parseService.parse(vm.selectedParsing, vm.manifest).then(function(result){
-				console.log(result);
 				vm.successResult = result;
 			}, function(err){
 				if (!_.isString(err)){

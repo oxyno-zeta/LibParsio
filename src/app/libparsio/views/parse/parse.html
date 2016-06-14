@@ -43,7 +43,7 @@
     <div class="panel panel-success" ng-if="parseCtrl.successResult !== undefined">
         <div class="panel-heading">Result</div>
         <div class="panel-body">
-            <div ng-repeat="(key, array) in parseCtrl.successResult">
+            <div ng-repeat="(key, array) in parseCtrl.successResult.results">
                 <h3 ng-bind="key"></h3>
                 <table class="table">
                     <thead>
@@ -57,7 +57,12 @@
                         <tr ng-repeat="item in array">
                             <td ng-bind="item.name"></td>
                             <td ng-bind="item.version"></td>
-                            <td>No action for the moment</td>
+                            <td>
+                                <button type="button" class="btn btn-default"
+                                        ng-click="parseCtrl.openInBrowser(parseCtrl.successResult.platform, item.name)">
+                                    Open in browser
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

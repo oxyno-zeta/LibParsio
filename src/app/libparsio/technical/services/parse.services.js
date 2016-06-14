@@ -32,18 +32,22 @@
 		 * Parse string manifest.
 		 * @param platform {String} platform : npm, go...
 		 * @param manifestString {String} String manifest
+		 * @return {Promise}
 		 */
 		function parse(platform, manifestString) {
 			var deferred = $q.defer();
 			// Parse data
 			parseWrapperService.parse(platform, manifestString).then(function(resultArray){
-				var response = {};
+				var response = {
+					platform: platform,
+					results: {}
+				};
 				_.forEach(resultArray, function(item){
-					if (_.isUndefined(response[item.type])){
-						response[item.type] = [];
+					if (_.isUndefined(response.results[item.type])){
+						response.results[item.type] = [];
 					}
 
-					response[item.type].push(item);
+					response.results[item.type].push(item);
 				});
 				deferred.resolve(response);
 			}, deferred.reject);
