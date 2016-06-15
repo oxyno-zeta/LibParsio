@@ -71,6 +71,9 @@
 			});
 		}
 
+		/**
+		 * How to get data.
+		 */
 		function howToGetData(){
 			// Reset value
 			if (vm.isHelpPanelShown){
@@ -80,8 +83,10 @@
 			vm.isHelpPanelShown = !vm.isHelpPanelShown;
 		}
 
+		/**
+		 * Open Account in Browser.
+		 */
 		function openAccountInBrowser(){
-			console.log('aozdkozakd');
 			systemService.openInBrowser(URL_CONSTANT.ACCOUNT_URL);
 		}
 	}
