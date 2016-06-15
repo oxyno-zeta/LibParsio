@@ -13,7 +13,8 @@
 				URL: 'https://libraries.io/api/github/:login',
 				LOGIN_KEY: ':login'
 			},
-			'LIBRARY_URL': 'https://libraries.io/:platform/:library'
+			'LIBRARY_URL': 'https://libraries.io/:platform/:library',
+			'ACCOUNT_URL': 'https://libraries.io/account'
 		});
 
 })();

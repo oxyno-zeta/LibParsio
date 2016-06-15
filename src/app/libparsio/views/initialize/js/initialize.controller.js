@@ -11,7 +11,7 @@
 		.controller('InitializeController', InitializeController);
 
 	/** @ngInject */
-	function InitializeController($timeout, $state, userService) {
+	function InitializeController($timeout, $state, userService, systemService, URL_CONSTANT) {
 		var vm = this;
 		// Variables
 		vm.username = undefined;
@@ -19,8 +19,12 @@
 		vm.errorMessage = false;
 		vm.loadingMessage = false;
 		vm.successMessage = false;
+		vm.isHelpPanelShown = false;
+		vm.isHelpPanelOpen = true;
 		// Functions
 		vm.submit = submit;
+		vm.howToGetData = howToGetData;
+		vm.openAccountInBrowser = openAccountInBrowser;
 
 		////////////////
 
@@ -58,13 +62,27 @@
 				// Change page
 				$timeout(function(){
 					$state.go('header.parse');
-				}, 1000);
+				}, 500);
 			}, function(){
 				// Error
 				vm.errorMessage = true;
 			}).finally(function(){
 				vm.loadingMessage = false;
 			});
+		}
+
+		function howToGetData(){
+			// Reset value
+			if (vm.isHelpPanelShown){
+				vm.isHelpPanelOpen = true;
+			}
+			// Change visibility for help panel
+			vm.isHelpPanelShown = !vm.isHelpPanelShown;
+		}
+
+		function openAccountInBrowser(){
+			console.log('aozdkozakd');
+			systemService.openInBrowser(URL_CONSTANT.ACCOUNT_URL);
 		}
 	}
 

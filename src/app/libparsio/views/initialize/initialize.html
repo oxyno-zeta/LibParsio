@@ -1,52 +1,92 @@
-<div class="panel panel-default">
-    <div class="panel-heading">User data</div>
-    <div class="panel-body">
-        <div class="input-group">
-            <input type="text"
-                   class="form-control"
-                   placeholder="Github username"
-                   aria-describedby="username"
-                   ng-model="initializeCtrl.username">
+<div class="panel-group col-xs-12">
+
+    <!-- Login Panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading">User data</div>
+        <div class="panel-body">
+            <div class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Github username"
+                       aria-describedby="username"
+                       ng-model="initializeCtrl.username">
             <span class="input-group-addon" id="username">
                 <i class="fa fa-user initialize-icon" aria-hidden="true"></i>
             </span>
-        </div>
+            </div>
 
-        <div class="separator-10"></div>
+            <div class="separator-10"></div>
 
-        <div class="input-group">
-            <input type="text"
-                   class="form-control"
-                   placeholder="Libraries.io Api Token"
-                   aria-describedby="token"
-                   ng-model="initializeCtrl.apiKey">
+            <div class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Libraries.io Api Token"
+                       aria-describedby="token"
+                       ng-model="initializeCtrl.apiKey">
             <span class="input-group-addon" id="token">
                 <i class="fa fa-key initialize-icon" aria-hidden="true"></i>
             </span>
-        </div>
+            </div>
 
-        <div class="separator-10"></div>
+            <div class="separator-10"></div>
 
-        <p class="bg-info text-info panel-p-full-size"
-           ng-if="initializeCtrl.loadingMessage">
-            <i class="fa fa-refresh fa-spin loading-text-margin"></i> Getting data...
-        </p>
+            <p class="bg-info text-info panel-p-full-size"
+               ng-if="initializeCtrl.loadingMessage">
+                <i class="fa fa-refresh fa-spin loading-text-margin"></i> Getting data...
+            </p>
 
-        <p class="bg-danger text-danger panel-p-full-size"
-           ng-if="initializeCtrl.errorMessage">
-            Error with your data ! Please change them and retry.
-        </p>
+            <p class="bg-danger text-danger panel-p-full-size"
+               ng-if="initializeCtrl.errorMessage">
+                Error with your data ! Please change them and retry.
+            </p>
 
-        <p class="bg-success text-success panel-p-full-size"
-           ng-if="initializeCtrl.successMessage">
-            Getting data succeed !
-        </p>
+            <p class="bg-success text-success panel-p-full-size"
+               ng-if="initializeCtrl.successMessage">
+                Getting data succeed !
+            </p>
 
-        <div class="separator-10"
-             ng-if="initializeCtrl.successMessage ||
+            <div class="separator-10"
+                 ng-if="initializeCtrl.successMessage ||
                 initializeCtrl.errorMessage ||
                 initializeCtrl.loadingMessage"></div>
 
-        <button type="button" class="btn btn-primary" ng-click="initializeCtrl.submit()">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="initializeCtrl.submit()">Submit</button>
+
+            <button type="button" class="btn btn-default" ng-click="initializeCtrl.howToGetData()">
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
+
+    <!-- Separator -->
+    <div class="separator-10"></div>
+
+    <!-- Help Panel -->
+    <uib-accordion close-others="false" ng-if="initializeCtrl.isHelpPanelShown">
+
+        <uib-accordion-group is-open="initializeCtrl.isHelpPanelOpen">
+
+            <uib-accordion-heading>
+                Help <i class="pull-right fa"
+                               ng-class="{'fa-chevron-down': initializeCtrl.isHelpPanelOpen,
+                    'fa-chevron-right': !initializeCtrl.isHelpPanelOpen}"></i>
+            </uib-accordion-heading>
+
+
+            <p>
+                How to get user data :
+            </p>
+            <ul>
+                <li>
+                    <b>Github username</b>: That is your Github username or login.
+                </li>
+                <li>
+                    <b>Libraries.io Api Token</b>: That is your Github api token for Libraries.io.
+                    You can find it <a href="" ng-click="initializeCtrl.openAccountInBrowser()">here</a>.
+                </li>
+            </ul>
+        </uib-accordion-group>
+
+    </uib-accordion>
+
 </div>
