@@ -30,7 +30,8 @@ module.exports = {
 					others: ['src/app/**/*.sass', 'src/app/**/*.scss', '!src/app/app.scss']
 				}
 			},
-			package: 'src/package.json'
+			package: 'src/package.json',
+			assets: 'src/assets*/**'
 		},
 		build: {
 			main: 'build/',
