@@ -11,10 +11,10 @@
 		.controller('ParseController', ParseController);
 
 	/** @ngInject */
-	function ParseController(parseService, subscribeService) {
+	function ParseController($filter, parseService, subscribeService) {
 		var vm = this;
 		// Variables
-		vm.allPossibleParsing = parseService.allPossibleParsing;
+		vm.allPossibleParsing = [];
 		vm.selectedParsing = undefined;
 		vm.manifest = undefined;
 		vm.editorOptions = {
@@ -29,6 +29,10 @@
 		// Functions
 		vm.parse = parse;
 		vm.openInBrowser = openInBrowser;
+		vm.buildCodeMirrorOptions = buildCodeMirrorOptions;
+
+		// Activate
+		activate();
 
 		////////////////
 
@@ -36,9 +40,25 @@
 		/* ********  PRIVATE FUNCTIONS  ******** */
 		/* ************************************* */
 
+		/**
+		 * Activate.
+		 */
+		function activate(){
+			vm.allPossibleParsing = $filter('orderBy')(parseService.allPossibleParsing, 'platform');
+		}
+
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
+
+		/**
+		 * Build Code Mirror Options (on ng-change).
+		 */
+		function buildCodeMirrorOptions(){
+			if (!_.isUndefined(vm.selectedParsing)) {
+				vm.editorOptions.mode = vm.selectedParsing.mode;
+			}
+		}
 
 		/**
 		 * Open in browser.
@@ -57,7 +77,7 @@
 			vm.successResult = undefined;
 			vm.errorMessage = undefined;
 			// Parse
-			parseService.parse(vm.selectedParsing, vm.manifest).then(function(result){
+			parseService.parse(vm.selectedParsing.platform, vm.manifest).then(function(result){
 				vm.successResult = result;
 
 				// Open or close panels

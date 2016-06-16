@@ -15,12 +15,10 @@
                 <div class="form-group">
                     <label for="inputSelect" class="col-sm-2 control-label">Platform</label>
                     <div class="col-sm-10">
-                        <select id="inputSelect" class="form-control" ng-model="parseCtrl.selectedParsing" ng-change="parseCtrl.modeChanged()">
-                            <option ng-repeat="parsing in parseCtrl.allPossibleParsing | orderBy:'platform'"
-                                    ng-value="parsing.platform"
-                                    ng-bind="parsing.platform">
-                            </option>
-                        </select>
+                        <select id="inputSelect" name="mySelect" class="form-control"
+                                ng-change="parseCtrl.buildCodeMirrorOptions()"
+                                ng-options="option.platform for option in parseCtrl.allPossibleParsing track by option.platform"
+                                ng-model="parseCtrl.selectedParsing"></select>
                     </div>
                 </div>
 

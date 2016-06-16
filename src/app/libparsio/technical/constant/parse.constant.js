@@ -12,179 +12,218 @@
 			allPossibleParsing: [
 				{
 					platform: 'npm',
-					fixture: ['package.json']
+					fixture: ['package.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'cpanMetaYML',
-					fixture: ['META.yml']
+					fixture: ['META.yml'],
+					mode: 'yaml'
 				},
 				{
 					platform: 'cpanMetaJSON',
-					fixture: ['META.json']
+					fixture: ['META.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'cran',
-					fixture: ['DESCRIPTION']
+					fixture: ['DESCRIPTION'],
+					mode: ''
 				},
 				{
 					platform: 'npmshrinkwrap',
-					fixture: ['npm-shrinkwrap.json']
+					fixture: ['npm-shrinkwrap.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'rubygems',
-					fixture: ['Gemfile']
+					fixture: ['Gemfile', 'gems.rb'],
+					mode: 'ruby'
 				},
 				{
 					platform: 'rubygemslockfile',
-					fixture: ['Gemfile.lock']
-				},
-				{
-					platform: 'rubygems',
-					fixture: ['gems.rb']
+					fixture: ['Gemfile.lock'],
+					mode: 'ruby'
 				},
 				{
 					platform: 'gemspec',
-					fixture: ['devise.gemspec']
+					fixture: ['devise.gemspec'],
+					mode: 'ruby'
 				},
 				{
 					platform: 'podspec',
-					fixture: ['example.podspec']
+					fixture: ['example.podspec'],
+					mode: 'ruby'
 				},
 				{
 					platform: 'podspecJson',
-					fixture: ['ALOSRPAuth.podspec.json']
+					fixture: ['ALOSRPAuth.podspec.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'packagist',
-					fixture: ['composer.json', 'composer2.json']
+					fixture: ['composer.json', 'composer2.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'packagistlockfile',
-					fixture: ['composer.lock']
+					fixture: ['composer.lock'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'nuspec',
-					fixture: ['example.nuspec']
+					fixture: ['example.nuspec'],
+					mode: 'xml'
 				},
 				{
 					platform: 'meteor',
-					fixture: ['versions.json']
+					fixture: ['versions.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'cargo',
-					fixture: ['Cargo.toml']
+					fixture: ['Cargo.toml'],
+					mode: 'toml'
 				},
 				{
 					platform: 'cargolockfile',
-					fixture: ['Cargo.lock']
+					fixture: ['Cargo.lock'],
+					mode: 'toml'
 				},
 				{
 					platform: 'elm',
-					fixture: ['elm-package.json', 'elm_dependencies.json']
+					fixture: ['elm-package.json', 'elm_dependencies.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'elmExact',
-					fixture: ['exact-dependencies.json']
+					fixture: ['exact-dependencies.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'bower',
-					fixture: ['bower.json']
+					fixture: ['bower.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'dub',
-					fixture: ['dub.json']
+					fixture: ['dub.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'dubSdl',
-					fixture: ['dub.sdl']
+					fixture: ['dub.sdl'],
+					mode: ''
 				},
 				{
 					platform: 'pub',
-					fixture: ['pubspec.yaml']
+					fixture: ['pubspec.yaml'],
+					mode: 'yaml'
 				},
 				{
 					platform: 'publock',
-					fixture: ['pubspec.lock']
+					fixture: ['pubspec.lock'],
+					mode: ''
 				},
 				{
 					platform: 'clojars',
-					fixture: ['project.clj']
+					fixture: ['project.clj'],
+					mode: 'clojure'
 				},
 				{
 					platform: 'hex',
-					fixture: ['mix.exs']
+					fixture: ['mix.exs'],
+					mode: ''
 				},
 				{
 					platform: 'pypi',
-					fixture: ['requirements.txt']
+					fixture: ['requirements.txt'],
+					mode: ''
 				},
 				{
 					platform: 'pypiSetup',
-					fixture: ['setup.py', 'setup2.py']
+					fixture: ['setup.py', 'setup2.py'],
+					mode: 'python'
 				},
 				{
 					platform: 'cocoapods',
-					fixture: ['Podfile']
+					fixture: ['Podfile'],
+					mode: 'ruby'
 				},
 				{
 					platform: 'cocoapodsLockfile',
-					fixture: ['Podfile.lock']
+					fixture: ['Podfile.lock'],
+					mode: ''
 				},
 				{
 					platform: 'nuget',
-					fixture: ['Project.json']
+					fixture: ['Project.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'nugetLockfile',
-					fixture: ['Project.lock.json']
+					fixture: ['Project.lock.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'nugetPackages',
-					fixture: ['packages.config']
+					fixture: ['packages.config'],
+					mode: 'xml'
 				},
 				{
 					platform: 'julia',
-					fixture: ['REQUIRE']
+					fixture: ['REQUIRE'],
+					mode: ''
 				},
 				{
 					platform: 'go',
-					fixture: ['Godeps.json']
+					fixture: ['Godeps.json'],
+					mode: 'javascript'
 				},
 				{
 					platform: 'glide',
-					fixture: ['glide.yaml']
+					fixture: ['glide.yaml'],
+					mode: 'yaml'
 				},
 				{
 					platform: 'glidelockfile',
-					fixture: ['glide.lock']
+					fixture: ['glide.lock'],
+					mode: ''
 				},
 				{
 					platform: 'cartfile',
-					fixture: ['Cartfile']
+					fixture: ['Cartfile'],
+					mode: ''
 				},
 				{
 					platform: 'cartfileprivate',
-					fixture: ['Cartfile.private']
+					fixture: ['Cartfile.private'],
+					mode: ''
 				},
 				{
 					platform: 'cartfileresolved',
-					fixture: ['Cartfile.resolved']
+					fixture: ['Cartfile.resolved'],
+					mode: ''
 				},
 				{
 					platform: 'maven',
-					fixture: ['pom.xml']
+					fixture: ['pom.xml'],
+					mode: 'xml'
 				},
 				{
 					platform: 'ivy',
-					fixture: ['ivy.xml']
+					fixture: ['ivy.xml'],
+					mode: 'xml'
 				},
 				{
 					platform: 'shard',
-					fixture: ['shard.yml']
+					fixture: ['shard.yml'],
+					mode: 'yaml'
 				},
 				{
 					platform: 'shardLockfile',
-					fixture: ['shard.lock']
+					fixture: ['shard.lock'],
+					mode: 'ruby'
 				}
 			]
 		});
