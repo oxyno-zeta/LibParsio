@@ -19,6 +19,10 @@ gulp.task('build:dev', function(cb){
 	return runSequence('clean', 'build:prepare', 'app', cb);
 });
 
+gulp.task('build:prod', function(cb){
+	return runSequence('clean', 'build:prepare', 'app', cb);
+});
+
 gulp.task('build:prepare', function(){
 	var paths = [
 		conf.paths.srcFiles.js,
