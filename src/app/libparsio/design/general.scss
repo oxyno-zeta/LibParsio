@@ -34,4 +34,8 @@
       padding-bottom: $font-size-base;
     }
   }
+
+  .table > tbody > tr > td {
+    vertical-align: middle;
+  }
 }
