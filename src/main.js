@@ -7,6 +7,7 @@
 /* ********       REQUIRE       ******** */
 /* ************************************* */
 
+const path = require('path');
 const electron = require('electron');
 // Module to control application life.
 const app = electron.app;
@@ -23,7 +24,12 @@ let mainWindow;
 
 function createWindow() {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({width: 800, height: 600});
+	mainWindow = new BrowserWindow({
+		width: 800,
+		height: 600,
+		title: 'Libparsio',
+		icon: path.join(__dirname, 'assets/images/logo.png')
+	});
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(`file://${__dirname}/app/index.html`);
