@@ -32,25 +32,25 @@ gulp.task('release:zip', function(cb){
 
 gulp.task('release:zip:win32:ia32', function(){
 	return gulp.src(path.join(conf.paths.dist.runnable, conf.runnable.win32.ia32 + '/**'))
-		.pipe(zip(conf.runnable.win32.ia32 + '.zip'))
+		.pipe(zip(conf.runnable.win32.ia32 + '-' + packageJson.version + '.zip'))
 		.pipe(gulp.dest(conf.paths.dist.zip));
 });
 
 gulp.task('release:zip:win32:x64', function(){
 	return gulp.src(path.join(conf.paths.dist.runnable, conf.runnable.win32.x64 + '/**'))
-		.pipe(zip(conf.runnable.win32.x64 + '.zip'))
+		.pipe(zip(conf.runnable.win32.x64 + '-' + packageJson.version + '.zip'))
 		.pipe(gulp.dest(conf.paths.dist.zip));
 });
 
 gulp.task('release:zip:linux:ia32', function(){
 	return gulp.src(path.join(conf.paths.dist.runnable, conf.runnable.linux.ia32 + '/**'))
-		.pipe(zip(conf.runnable.linux.ia32 + '.zip'))
+		.pipe(zip(conf.runnable.linux.ia32 + '-' + packageJson.version + '.zip'))
 		.pipe(gulp.dest(conf.paths.dist.zip));
 });
 
 gulp.task('release:zip:linux:x64', function(){
 	return gulp.src(path.join(conf.paths.dist.runnable, conf.runnable.linux.x64 + '/**'))
-		.pipe(zip(conf.runnable.linux.x64 + '.zip'))
+		.pipe(zip(conf.runnable.linux.x64 + '-' + packageJson.version + '.zip'))
 		.pipe(gulp.dest(conf.paths.dist.zip));
 });
 

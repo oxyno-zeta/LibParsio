@@ -69,8 +69,8 @@ module.exports = {
 		release: 'release/'
 	},
 	packager: {
-		arch: 'all',
-		platform: 'all',
+		arch: ['ia32', 'x64'],
+		platform: ['darwin', 'linux', 'win32'],
 		version: electronVersion, // Electron version
 		asar: true,
 		packaging: true
