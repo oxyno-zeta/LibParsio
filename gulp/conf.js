@@ -8,7 +8,24 @@
 /* ********       REQUIRE       ******** */
 /* ************************************* */
 
+var _ = require('lodash');
 var packageJson = require('../package.json');
+var electronVersion = getElectronVersion();
+
+/* ************************************* */
+/* ********  PRIVATE FUNCTIONS  ******** */
+/* ************************************* */
+
+/**
+ * Get Electron Version.
+ */
+function getElectronVersion(){
+	var electronOriginalVersion = packageJson['devDependencies']['electron-prebuilt'];
+	if (!_.isInteger(electronOriginalVersion[0])){
+		electronOriginalVersion = electronOriginalVersion.substring(1, electronOriginalVersion.length);
+	}
+	return electronOriginalVersion;
+}
 
 /* ************************************* */
 /* ********       EXPORTS       ******** */
@@ -54,7 +71,7 @@ module.exports = {
 	packager: {
 		arch: 'all',
 		platform: 'all',
-		version: '1.2.1', // Electron version
+		version: electronVersion, // Electron version
 		asar: true,
 		packaging: true
 	},
