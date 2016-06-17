@@ -1,6 +1,6 @@
 {
   "name": "libparsio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Unofficial Libraries.io Client",
   "main": "main.js",
   "scripts": {
