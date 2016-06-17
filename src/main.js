@@ -9,6 +9,7 @@
 
 const path = require('path');
 const electron = require('electron');
+const windowStateKeeper = require('electron-window-state');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -22,11 +23,23 @@ let mainWindow;
 /* ********  PRIVATE FUNCTIONS  ******** */
 /* ************************************* */
 
+/**
+ * Create window.
+ */
 function createWindow() {
+
+	// Load the previous state with fallback to defaults
+	let mainWindowState = windowStateKeeper({
+		defaultWidth: 800,
+		defaultHeight: 600
+	});
+
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 800,
-		height: 600,
+		x: mainWindowState.x,
+		y: mainWindowState.y,
+		width: mainWindowState.width,
+		height: mainWindowState.height,
 		title: 'LibParsio',
 		icon: path.join(__dirname, 'assets/images/logo.png')
 	});
@@ -45,7 +58,12 @@ function createWindow() {
 		// in an array if your app supports multi windows, this is the time
 		// when you should delete the corresponding element.
 		mainWindow = null;
-	})
+	});
+
+	// Let us register listeners on the window, so we can update the state
+	// automatically (the listeners will be removed when the window is closed)
+	// and restore the maximized or full screen state
+	mainWindowState.manage(mainWindow);
 }
 
 /* ************************************* */
@@ -70,7 +88,7 @@ app.on('activate', function () {
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.
 	if (mainWindow === null) {
-		createWindow()
+		createWindow();
 	}
 });
 
