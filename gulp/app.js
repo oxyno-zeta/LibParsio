@@ -57,10 +57,10 @@ gulp.task('app:sass', function(){
 
 	return gulp.src(conf.paths.srcFiles.app.sass.main)
 		.pipe(inject(injectFiles, injectOptions))
-		.pipe(sass()).on('error', sass.logError)
+		.pipe(sass())
 		.pipe(autoprefixer({
 			browsers: ['last 4 versions']
-		})).on('error', console.error)
+		}))
 		.pipe(gulp.dest(conf.paths.build.app.main));
 });
 
