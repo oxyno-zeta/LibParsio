@@ -11,6 +11,7 @@ before_install:
 
 before_script:
   - npm install -g gulp
+  - cd src/ && npm install
 
 script: gulp build:prod
 
