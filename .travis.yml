@@ -9,6 +9,10 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
+branches:
+  only:
+    - master
+
 before_script:
   - npm install -g gulp
   - cd src/ && npm install
