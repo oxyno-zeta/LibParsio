@@ -70,7 +70,20 @@ module.exports = {
 	},
 	packager: {
 		arch: ['ia32', 'x64'],
-		platform: ['darwin', 'linux', 'win32'],
+		platform: {
+			darwin: {
+				name: 'darwin',
+				icon: 'resources/logo/logo.icns'
+			},
+			linux: {
+				name: 'linux',
+				icon: 'resources/logo/logo.png'
+			},
+			win32: {
+				name: 'win32',
+				icon: 'resources/logo/logo.ico'
+			}
+		},
 		version: electronVersion, // Electron version
 		asar: true,
 		packaging: true

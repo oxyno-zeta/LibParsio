@@ -17,6 +17,37 @@ var packageJson = require('../package.json');
 var conf = require('./conf');
 
 /* ************************************* */
+/* ********  PRIVATE FUNCTIONS  ******** */
+/* ************************************* */
+
+function packager(platform, icon, cb){
+	electronPackager({
+		arch: conf.packager.arch,
+		dir: conf.paths.build.main,
+		platform: platform,
+		'app-version': packageJson.version,
+		asar: conf.packager.asar,
+		'build-version': packageJson.version,
+		download: {
+			cache: conf.paths.cache
+		},
+		icon: icon,
+		name: packageJson.name,
+		out: conf.paths.dist.runnable,
+		tmpdir: conf.paths.tmp,
+		version: conf.packager.version,
+		// Mac OS
+		'app-bundle-id': 'com.libparsio',
+		'app-category-type': 'public.app-category.utilities',
+		// Windows
+		'version-string': {
+			'CompanyName': packageJson.name,
+			'ProductName': packageJson.name
+		}
+	}, cb);
+}
+
+/* ************************************* */
 /* ********   PUBLIC FUNCTIONS  ******** */
 /* ************************************* */
 
@@ -55,34 +86,17 @@ gulp.task('release:zip:linux:x64', function(){
 });
 
 gulp.task('release:packager', function(cb) {
-	electronPackager({
-		arch: conf.packager.arch,
-		dir: conf.paths.build.main,
-		platform: conf.packager.platform,
-		'build-version': packageJson.version,
-		packageJson: packageJson,
-		download: {
-			cache: conf.paths.cache
-		},
-		name: packageJson.name,
-		out: conf.paths.dist.runnable,
-		release: conf.paths.release,
-		asar: conf.packager.asar,
-		tmpdir: conf.paths.tmp,
-		version: conf.packager.version,
-		packaging: conf.packager.packaging,
-		platformResources: {
-			darwin: {
-				CFBundleDisplayName: packageJson.name,
-				CFBundleIdentifier: packageJson.name,
-				CFBundleName: packageJson.name,
-				CFBundleVersion: packageJson.version
-			},
-			win: {
-				'version-string': packageJson.version,
-				'file-version': packageJson.version,
-				'product-version': packageJson.version
-			}
-		}
-	}, cb);
+	runSequence('release:packager:win32', 'release:packager:linux', 'release:packager:darwin', cb);
+});
+
+gulp.task('release:packager:win32', function(cb) {
+	packager(conf.packager.platform.win32.name, conf.packager.platform.win32.icon, cb);
+});
+
+gulp.task('release:packager:linux', function(cb) {
+	packager(conf.packager.platform.linux.name, conf.packager.platform.linux.icon, cb);
+});
+
+gulp.task('release:packager:darwin', function(cb) {
+	packager(conf.packager.platform.darwin.name, conf.packager.platform.darwin.icon, cb);
 });
