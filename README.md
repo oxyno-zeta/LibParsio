@@ -5,7 +5,7 @@
 # Screenshots
 | Login | Parsing  | Result  |
 |:-------------:|:-------:|:-------:|
-|![Login](https://github.com/oxyno-zeta/LibParsio/blob/master/images/screen1.png)|![Result](https://github.com/oxyno-zeta/LibParsio/blob/master/images/screen3.png)|![Parse](https://github.com/oxyno-zeta/LibParsio/blob/master/images/screen2.png)|
+|![Login](https://github.com/oxyno-zeta/LibParsio/blob/master/resources/screen/screen1.png)|![Result](https://github.com/oxyno-zeta/LibParsio/blob/master/resources/screen/screen3.png)|![Parse](https://github.com/oxyno-zeta/LibParsio/blob/master/resources/screen/screen2.png)|
 
 # Description
 LibParsio is an unofficial desktop application for Libraries.io. This app allow you to parse your manifest files like 
