@@ -25,6 +25,7 @@
 		vm.submit = submit;
 		vm.howToGetData = howToGetData;
 		vm.openAccountInBrowser = openAccountInBrowser;
+		vm.isSubmitDisabled = isSubmitDisabled;
 
 		////////////////
 
@@ -44,6 +45,15 @@
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
+
+		/**
+		 * Check if submit button is disabled.
+		 * @returns {boolean}
+		 */
+		function isSubmitDisabled(){
+			return (_.isUndefined(vm.username) || _.isEqual(vm.username.length, 0) ||
+					_.isUndefined(vm.apiKey) || _.isEqual(vm.apiKey.length, 0));
+		}
 
 		/**
 		 * Submit data.

@@ -33,7 +33,10 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" ng-click="parseCtrl.parse()">Parse</button>
+                        <button type="submit" class="btn btn-default" ng-disabled="parseCtrl.isParseDisabled()"
+                                ng-click="parseCtrl.parse()">
+                            Parse
+                        </button>
                     </div>
                 </div>
 
