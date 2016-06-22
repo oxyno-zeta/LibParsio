@@ -12,6 +12,7 @@ var fs = require('fs');
 var gulp = require('gulp');
 var electronPackager = require('electron-packager');
 var zip = require('gulp-zip');
+var crossZip = require('cross-zip');
 var runSequence = require('run-sequence');
 var packageJson = require('../package.json');
 var conf = require('./conf');
@@ -116,10 +117,19 @@ gulp.task('release', function(cb){
 	return runSequence('clean:release', 'build:prod', 'release:packager', 'release:zip', cb);
 });
 
-// Cannot zip MAS and DARWIN...
 gulp.task('release:zip', function(cb){
-	return runSequence(['release:zip:win32:ia32', 'release:zip:win32:x64', 'release:zip:linux:ia32',
-		'release:zip:linux:x64'], cb);
+	return runSequence('release:zip:win32:ia32', 'release:zip:win32:x64', 'release:zip:linux:ia32',
+		'release:zip:linux:x64', 'release:zip:darwin:x64', cb);
+});
+
+gulp.task('release:zip:darwin:x64', function(cb){
+	var input = path.join(conf.paths.dist.runnable, conf.runnable.darwin.x64);
+
+	var output = process.cwd();
+	output = path.join(output, conf.paths.dist.zip);
+	output = path.join(output, conf.runnable.darwin.x64 + '-' + packageJson.version + '.zip');
+
+	crossZip.zip(input, output, cb);
 });
 
 gulp.task('release:zip:win32:ia32', function(){
