@@ -12,6 +12,9 @@ var _ = require('lodash');
 var packageJson = require('../package.json');
 var electronVersion = getElectronVersion();
 
+// Constants
+var fullAppName = 'LibParsio';
+
 /* ************************************* */
 /* ********  PRIVATE FUNCTIONS  ******** */
 /* ************************************* */
@@ -86,22 +89,24 @@ module.exports = {
 		},
 		version: electronVersion, // Electron version
 		asar: true,
-		packaging: true
+		packaging: true,
+		copyright: 'Copyright © 2014-2016 LibParsio',
+		fullAppName: fullAppName
 	},
 	runnable: {
 		linux: {
-			ia32: packageJson.name + '-linux-ia32',
-			x64: packageJson.name + '-linux-x64'
+			ia32: fullAppName + '-linux-ia32',
+			x64: fullAppName + '-linux-x64'
 		},
 		win32: {
-			ia32: packageJson.name + '-win32-ia32',
-			x64: packageJson.name + '-win32-x64'
+			ia32: fullAppName + '-win32-ia32',
+			x64: fullAppName + '-win32-x64'
 		},
 		darwin: {
-			x64: packageJson.name + '-darwin-x64'
+			x64: fullAppName + '-darwin-x64'
 		},
 		mas: {
-			x64: packageJson.name + '-mas-x64'
+			x64: fullAppName + '-mas-x64'
 		}
 	}
 };

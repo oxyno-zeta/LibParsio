@@ -22,36 +22,87 @@ var conf = require('./conf');
 
 function packager(platform, icon, cb){
 	electronPackager({
+
+		// Architecture for the build
 		arch: conf.packager.arch,
+
+		// Source dir
 		dir: conf.paths.build.main,
+
+		// Platform to build
 		platform: platform,
+
+		// App version
 		'app-version': packageJson.version,
+
+		// The human-readable copyright line for the app. Maps to the `LegalCopyright` metadata
+		// property on Windows, and `NSHumanReadableCopyright` on OS X.
+		'app-copyright': conf.packager.copyright,
+
+		// Package the application's source code into an archive, using Electron's archive
+		// format. Mitigates issues around long path names on Windows and slightly speeds up
+		// require().
 		asar: conf.packager.asar,
+
+		// The build version of the application. Maps to the FileVersion metadata property on
+		// Windows, and CFBundleVersion on OS X. Note: Windows requires the build version to
+		// start with a number. We're using the version of the underlying WebTorrent library.
 		'build-version': packageJson.version,
+
+		// Download cache
 		download: {
 			cache: conf.paths.cache
 		},
+
+		// Application icon
 		icon: icon,
-		name: packageJson.name,
+
+		// Application full name
+		name: conf.packager.fullAppName,
+
+		// Output dir
 		out: conf.paths.dist.runnable,
+
+		// Temp dir
 		tmpdir: conf.paths.tmp,
+
+		// Version
 		version: conf.packager.version,
-		// Mac OS
+
+		/**            Mac OS            **/
+
+		// The bundle identifier to use in the application's plist (OS X only).
 		'app-bundle-id': 'com.libparsio',
+
+		// The application category type, as shown in the Finder via "View" -> "Arrange by
+		// Application Category" when viewing the Applications directory (OS X only).
 		'app-category-type': 'public.app-category.utilities',
-		// Windows
+
+		/**            Windows           **/
+
+		// Object hash of application metadata to embed into the executable (Windows only)
 		'version-string': {
+
+			// Company that produced the file.
 			'CompanyName': packageJson.name,
+
+			// Name of the product with which the file is distributed.
 			'ProductName': packageJson.name,
+
 			// Original name of the file, not including a path. This information enables an
 			// application to determine whether a file has been renamed by a user. The format of
 			// the name depends on the file system for which the file was created.
 			'OriginalFilename': packageJson.name + '.exe',
+
 			// Internal name of the file, if one exists, for example, a module name if the file
 			// is a dynamic-link library. If the file has no internal name, this string should be
 			// the original filename, without extension. This string is required.
 			'InternalName': packageJson.name + '.exe',
-			'FileDescription': 'LibParsio',
+
+			// Name of the program, displayed to users
+			'FileDescription': conf.packager.fullAppName,
+
+			// Product version
 			'ProductVersion': packageJson.version
 		}
 	}, cb);
