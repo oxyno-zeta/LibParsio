@@ -1,5 +1,5 @@
 /*
- * Author: Alexandre Havrileck (Oxyno-zeta) 
+ * Author: Alexandre Havrileck (Oxyno-zeta)
  * Date: 04/06/16
  * Licence: See Readme
  */
@@ -42,7 +42,17 @@ function packager(platform, icon, cb){
 		// Windows
 		'version-string': {
 			'CompanyName': packageJson.name,
-			'ProductName': packageJson.name
+			'ProductName': packageJson.name,
+			// Original name of the file, not including a path. This information enables an
+			// application to determine whether a file has been renamed by a user. The format of
+			// the name depends on the file system for which the file was created.
+			'OriginalFilename': packageJson.name + '.exe',
+			// Internal name of the file, if one exists, for example, a module name if the file
+			// is a dynamic-link library. If the file has no internal name, this string should be
+			// the original filename, without extension. This string is required.
+			'InternalName': packageJson.name + '.exe',
+			'FileDescription': 'LibParsio',
+			'ProductVersion': packageJson.version
 		}
 	}, cb);
 }
