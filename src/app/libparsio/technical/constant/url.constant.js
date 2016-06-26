@@ -18,6 +18,9 @@
 			'GITHUB_PROJECT': {
 				'API':{
 					'RELEASE_LATEST': 'https://api.github.com/repos/oxyno-zeta/libparsio/releases/latest'
+				},
+				'SITE': {
+					'RELEASE': 'https://github.com/oxyno-zeta/LibParsio/releases'
 				}
 			}
 		});
