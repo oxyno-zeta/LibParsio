@@ -41,6 +41,7 @@ module.exports = {
 			node_modules: 'src/node_modules*/**',
 			js: 'src/*.js',
 			index: 'src/app/index.html',
+			backend: ['src/backend/**/*.js'],
 			app: {
 				main: 'src/app',
 				html: ['!src/app/index.html', 'src/app/**/*.html'],
@@ -60,7 +61,8 @@ module.exports = {
 				js: 'build/app/**/*.js',
 				css: 'build/app/*.css',
 				index: 'build/app/index.html'
-			}
+			},
+			backend: 'build/backend/'
 		},
 		cache: 'cache/',
 		tmp: '.tmp/',
