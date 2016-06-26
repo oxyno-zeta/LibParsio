@@ -10,6 +10,7 @@
 	angular
 		.module('libparsio.views', [
 			'libparsio.views.header',
+			'libparsio.views.modal',
 			'libparsio.views.loading',
 			'libparsio.views.initialize',
 			'libparsio.views.parse',

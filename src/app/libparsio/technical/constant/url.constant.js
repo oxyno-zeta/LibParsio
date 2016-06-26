@@ -17,7 +17,10 @@
 			'ACCOUNT_URL': 'https://libraries.io/account',
 			'GITHUB_PROJECT': {
 				'API':{
-					'RELEASE': 'https://api.github.com/repos/oxyno-zeta/libparsio/releases'
+					'RELEASE_LATEST': 'https://api.github.com/repos/oxyno-zeta/libparsio/releases/latest'
+				},
+				'SITE': {
+					'RELEASE': 'https://github.com/oxyno-zeta/LibParsio/releases'
 				}
 			}
 		});
