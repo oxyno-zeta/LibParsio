@@ -21,6 +21,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <i ng-animate="'animate'"
+                       ng-if="headerCtrl.updateCache.needUpdate"
+                       tooltip-placement="bottom"
+                       uib-tooltip="{{headerCtrl.updateMessage}}"
+                       tooltip-class="header-download-update-tooltip"
+                       tooltip-is-open="headerCtrl.isUpdateTooltipOpened"
+                       class="fa fa-download bg-primary header-download-update" aria-hidden="true">
+                    </i>
+                </li>
                 <li class="dropdown" ng-if="headerCtrl.isDataSet">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">
