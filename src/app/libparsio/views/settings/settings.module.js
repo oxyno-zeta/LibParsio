@@ -8,7 +8,8 @@
 
 	angular
 		.module('libparsio.views.settings', [
-			'libparsio.views.settings.user'
+			'libparsio.views.settings.user',
+			'libparsio.views.settings.general'
 		]);
 
 })();
