@@ -11,7 +11,7 @@
 		.factory('updateService', updateService);
 
 	/** @ngInject */
-	function updateService($q, updateDaoService, updateWrapperService, updateCacheService) {
+	function updateService($q, settingsService, updateDaoService, updateWrapperService, updateCacheService) {
 		var service = {
 			initialize: initialize
 		};
@@ -32,21 +32,26 @@
 		 * Initialize.
 		 */
 		function initialize() {
-			var promises = [];
+			settingsService.getSettings().then(function(settings){
+				if (settings.checkUpdateOnStartup) {
+					var promises = [];
 
-			promises.push(updateDaoService.getReleases());
-			promises.push(updateWrapperService.getAppVersion());
+					promises.push(updateDaoService.getReleases());
+					promises.push(updateWrapperService.getAppVersion());
 
-			$q.all(promises).then(function(response){
-				var release = response[0];
-				var appVersion = response[1];
+					$q.all(promises).then(function (response) {
+						var release = response[0];
+						//var appVersion = response[1];
+						var appVersion = '0.1.0';
 
-				var version = updateWrapperService.clean(release['tag_name']);
+						var version = updateWrapperService.clean(release['tag_name']);
 
-				// Check if version if greater than actual
-				var isGreaterThan = updateWrapperService.isGreaterThan(version, appVersion);
-				if (isGreaterThan){
-					updateCacheService.putAllData(true, version);
+						// Check if version if greater than actual
+						var isGreaterThan = updateWrapperService.isGreaterThan(version, appVersion);
+						if (isGreaterThan) {
+							updateCacheService.putAllData(true, version);
+						}
+					});
 				}
 			});
 		}
