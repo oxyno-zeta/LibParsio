@@ -41,8 +41,7 @@
 
 					$q.all(promises).then(function (response) {
 						var release = response[0];
-						//var appVersion = response[1];
-						var appVersion = '0.1.0';
+						var appVersion = response[1];
 
 						var version = updateWrapperService.clean(release['tag_name']);
 
