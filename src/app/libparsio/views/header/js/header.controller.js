@@ -11,11 +11,14 @@
 		.controller('HeaderController', HeaderController);
 
 	/** @ngInject */
-	function HeaderController($rootScope, $state, userCacheService) {
+	function HeaderController($timeout, $rootScope, $state, modalService, userCacheService, updateCacheService) {
 		var vm = this;
 		// Variables
 		vm.isDataSet = userCacheService.isDataFullySet();
 		vm.userCache = userCacheService.userCache;
+		vm.updateCache = updateCacheService.cache;
+		vm.isUpdateTooltipOpened = false;
+		vm.updateMessage = '';
 		// Functions
 		vm.openMainPage = openMainPage;
 		vm.disconnect = disconnect;
@@ -58,6 +61,19 @@
 		/* ************************************* */
 		/* ********        EVENTS       ******** */
 		/* ************************************* */
+
+		$rootScope.$on('updateCache:dataSet', function(){
+			// Check if new version
+			if (updateCacheService.cache.needUpdate) {
+				// Update message
+				vm.updateMessage = 'A new version (' + updateCacheService.cache.newVersion + ') is available !';
+				// Force open tooltip
+				$timeout(function () {
+					vm.isUpdateTooltipOpened = true;
+					modalService.runUpdateModal(updateCacheService.cache.newVersion);
+				}, 200);
+			}
+		});
 
 		$rootScope.$on('userCache:dataSet', function(){
 			vm.isDataSet = true;

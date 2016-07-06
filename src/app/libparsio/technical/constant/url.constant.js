@@ -14,7 +14,15 @@
 				LOGIN_KEY: ':login'
 			},
 			'LIBRARY_URL': 'https://libraries.io/:platform/:library',
-			'ACCOUNT_URL': 'https://libraries.io/account'
+			'ACCOUNT_URL': 'https://libraries.io/account',
+			'GITHUB_PROJECT': {
+				'API':{
+					'RELEASE_LATEST': 'https://api.github.com/repos/oxyno-zeta/libparsio/releases/latest'
+				},
+				'SITE': {
+					'RELEASE': 'https://github.com/oxyno-zeta/LibParsio/releases'
+				}
+			}
 		});
 
 })();

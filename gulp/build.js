@@ -23,7 +23,9 @@ gulp.task('build:prod', function(cb){
 	return runSequence('clean', 'build:prepare', 'app', cb);
 });
 
-gulp.task('build:prepare', function(){
+gulp.task('build:prepare', ['build:prepare:others', 'build:prepare:backend']);
+
+gulp.task('build:prepare:others', function(){
 	var paths = [
 		conf.paths.srcFiles.js,
 		conf.paths.srcFiles.package,
@@ -32,6 +34,11 @@ gulp.task('build:prepare', function(){
 	];
 	gulp.src(paths)
 		.pipe(gulp.dest(conf.paths.build.main));
+});
+
+gulp.task('build:prepare:backend', function(){
+	gulp.src(conf.paths.srcFiles.backend)
+		.pipe(gulp.dest(conf.paths.build.backend));
 });
 
 

@@ -30,6 +30,7 @@
 		vm.parse = parse;
 		vm.openInBrowser = openInBrowser;
 		vm.buildCodeMirrorOptions = buildCodeMirrorOptions;
+		vm.isParseDisabled = isParseDisabled;
 
 		// Activate
 		activate();
@@ -50,6 +51,16 @@
 		/* ************************************* */
 		/* ********   PUBLIC FUNCTIONS  ******** */
 		/* ************************************* */
+
+		/**
+		 * Check is parse button is disabled.
+		 * @returns {boolean}
+		 */
+		function isParseDisabled(){
+			return (_.isUndefined(vm.selectedParsing) ||
+					_.isUndefined(vm.manifest) ||
+					_.isEqual(vm.manifest.length, 0));
+		}
 
 		/**
 		 * Build Code Mirror Options (on ng-change).

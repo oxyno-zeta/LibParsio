@@ -13,6 +13,9 @@
 				API_KEY: 'user-api-key',
 				USERNAME: 'user-username',
 				USERDATA: 'user-user-data'
+			},
+			SETTINGS: {
+				CHECK_UPDATE_ON_STARTUP: 'settings-check-on-startup'
 			}
 		});
 
