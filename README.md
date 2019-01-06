@@ -1,6 +1,6 @@
 <img src="https://github.com/oxyno-zeta/LibParsio/blob/master/src/assets/images/logo.png" width="40"> LibParsio ([Libraries.io](http://www.libraries.io/) parsing Desktop client)
 ===========================================================================
-[![Build Status](https://travis-ci.org/oxyno-zeta/LibParsio.svg?branch=master)](https://travis-ci.org/oxyno-zeta/LibParsio)
+[![Build Status](https://travis-ci.org/oxyno-zeta/LibParsio.svg?branch=master)](https://travis-ci.org/oxyno-zeta/LibParsio) [![Greenkeeper badge](https://badges.greenkeeper.io/oxyno-zeta/LibParsio.svg)](https://greenkeeper.io/)
 
 # Screenshots
 | Login | Parsing  | Result  |
