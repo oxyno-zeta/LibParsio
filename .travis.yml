@@ -12,6 +12,7 @@ before_install:
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 
 before_script:
   - npm install -g gulp
